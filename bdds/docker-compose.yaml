@@ -1,0 +1,26 @@
+version: "3.3"
+
+services:
+        # Servicio para PostgreSQL
+        postgres:
+                image: postgres:14
+                container_name: bdd_postgres_db
+                restart: always
+                environment:
+                        POSTGRES_DB: bdd_db
+                        POSTGRES_USER: admin
+                        POSTGRES_PASSWORD: admin123
+                ports:
+                        - "5433:5432"
+                volumes:
+                        - ./data/postgres:/var/lib/postgresql/data
+        # Servicio para PgAdmin
+        pgadmin:
+                image: dpage/pgadmin4:7.5
+                container_name: bdd_pg_admin
+                restart: always
+                environment:
+                        PGADMIN_DEFAULT_EMAIL: rbohorquez@fi.uba.ar
+                        PGADMIN_DEFAULT_PASSWORD: admin123
+                ports:
+                        - "5050:80"
