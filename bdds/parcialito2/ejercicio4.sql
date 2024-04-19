@@ -1,12 +1,12 @@
 -- Mostrar el padrón, apellido y promedio para aquellos alumnos que tienen nota en más
 -- de 3 materias y un promedio de al menos 5.
 
-select n.padron, a.apellido, round(avg(nota), 2) as promedio
-from notas n
-left join alumnos a on n.padron = a.padron
-group by n.padron, a.apellido
-having count(n.nota) > 3 and avg(n.nota) >= 5
-order by padron;
+SELECT n.padron, a.apellido, ROUND(AVG(nota), 2) as promedio
+FROM notas n
+LEFT JOIN alumnos a ON n.padron = a.padron
+GROUP BY n.padron, a.apellido
+having COUNT(n.nota) > 3 AND AVG(n.nota) >= 5
+ORDER BY padron;
 
 -- Resultados --
 --  padron | apellido  | promedio 

@@ -6,14 +6,14 @@
 -- crecientes en el tiempo. NO utilizar este criterio para determinar al alumno
 -- más antiguo.
 
-select n.padron, n.codigo, n.numero, n.nota
-from notas n
-where n.padron in (
-    select padron
-    from alumnos
-    where fecha_ingreso = (
-        select min(fecha_ingreso)
-        from alumnos
+SELECT n.padron, n.codigo, n.numero, n.nota
+FROM notas n
+WHERE n.padron IN (
+    SELECT padron
+    FROM alumnos
+    WHERE fecha_ingreso = (
+        SELECT MIN(fecha_ingreso)
+        FROM alumnos
     )
 );
 

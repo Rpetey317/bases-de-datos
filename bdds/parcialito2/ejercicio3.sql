@@ -6,11 +6,11 @@
 -- Nota 2: Si un alumno está inscripto en más de una carrera, sus notas aportan a los
 -- promedios de todas esas carreras.
 
-select i.codigo as codigo_carrera, n.codigo as codigo_dpto, round(avg(nota), 2) as promedio
-from notas n
-left join inscripto_en i on n.padron = i.padron
-group by i.codigo, n.codigo
-order by codigo_carrera, codigo_dpto;
+SELECT i.codigo as codigo_carrera, n.codigo as codigo_dpto, ROUND(AVG(nota), 2) as promedio
+FROM notas n
+LEFT JOIN inscripto_en i ON n.padron = i.padron
+GROUP BY i.codigo, n.codigo
+ORDER BY codigo_carrera, codigo_dpto;
 
 -- Resultados --
 --  codigo_carrera | codigo_dpto | promedio 
